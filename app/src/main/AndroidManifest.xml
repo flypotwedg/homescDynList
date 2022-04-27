@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Homesc">
         <activity
+            android:name=".vendorList"
+            android:exported="false" />
+        <activity
             android:name=".Lawnmower"
             android:exported="false" />
         <activity
@@ -51,9 +54,8 @@
         <activity
             android:name=".PersonalInformation"
             android:exported="false" />
-
         <activity
-            android:name=".MainActivity"
+            android:name=".login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

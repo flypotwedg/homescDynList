@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class login extends AppCompatActivity implements View.OnClickListener {
 
     public TextView register, forgotPassword;
     private EditText editEmail, editPassword;
@@ -27,26 +27,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public ProgressBar progressBar;
     private FirebaseAuth mAuth;
 
-
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+        setContentView(R.layout.activity_login);
 
         VendorSignIn = (Button) findViewById(R.id.VendorLogin);
         VendorSignIn.setOnClickListener(this);
 
         forgotPassword = (TextView) findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(this);
-
 
         register = (TextView) findViewById(R.id.register);
         register.setOnClickListener(this);
@@ -56,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         mAuth = FirebaseAuth.getInstance();
-
 
     }
 
@@ -83,14 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-
     }
     public void userLogin() {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
-
-
-
 
         if (email.isEmpty()) {
             editEmail.setError("An email is required");
@@ -108,20 +93,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-
                     if (task.isSuccessful()) {
                         //go to home page for user
-
-                            Intent intent = new Intent(MainActivity.this, UserHomePage.class);
+                            Intent intent = new Intent(login.this, UserHomePage.class);
                             startActivity(intent);
                         }
-
-                     else {
-                        Toast.makeText(MainActivity.this, "Login Failed ", Toast.LENGTH_SHORT).show();
+                    else {
+                        Toast.makeText(login.this, "Login Failed ", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
-
-
-
                     }
 
                 }

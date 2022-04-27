@@ -1,20 +1,49 @@
 package com.example.homesc;
 
 public class order {
-    int price;
-    String date;
-    String time;
-    String vendorName;
-    String address;
+    private String orderUID;
+    private String vendName;
+    private String apptDate;
+    private String apptTime;
 
-    public order(int price, String date, String time, String vendorName, String address)
+    public order(String orderUID, String vendName, String apptDate, String apptTime)
     {
-        this.price = price;
-        this.date = date;
-        this.time = time;
-        this.vendorName = vendorName;
-        this.address = address;
-
+        this.orderUID=orderUID;
+        this.vendName=vendName;
+        this.apptDate=apptDate;
+        this.apptTime=apptTime;
+    }
+    public void setOrderUID(String orderUID)
+    {
+        this.orderUID=orderUID;
+    }
+    public void setVendName(String vendName)
+    {
+        this.vendName=vendName;
+    }
+    public void setApptDate(String apptDate)
+    {
+        this.apptDate=apptDate;
+    }
+    public void setApptTime(String apptTime)
+    {
+        this.apptTime=apptTime;
     }
 
+    public String getOrderUID()
+    {
+        return orderUID;
+    }
+    public String getVendName()
+    {
+        return vendName;
+    }
+    public String getApptDate()
+    {
+        return apptDate;
+    }
+    public String getApptTime()
+    {
+        return apptTime;
+    }
 }
