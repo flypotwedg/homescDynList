@@ -9,9 +9,11 @@ public class order{
     float price;
     String date;
     String time;
+
     String address;
     String vendorName;
     String vendUID;
+
     String user;
     String userUID;
     int status; //0 in progress, 1 finished, -1 cancelled

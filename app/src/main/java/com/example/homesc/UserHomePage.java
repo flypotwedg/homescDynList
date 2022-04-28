@@ -63,7 +63,6 @@ public class    UserHomePage extends AppCompatActivity {
         plumbing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(UserHomePage.this, vendorList.class);
                 intent.putExtra("category","Plumbing");
                 startActivity(intent);
@@ -72,7 +71,6 @@ public class    UserHomePage extends AppCompatActivity {
         electrical.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(UserHomePage.this,vendorList.class);
                 intent.putExtra("category","Electrical");
                 startActivity(intent);
@@ -81,7 +79,6 @@ public class    UserHomePage extends AppCompatActivity {
         tutoring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(UserHomePage.this, vendorList.class);
                 intent.putExtra("category","Tutoring");
                 startActivity(intent);
@@ -90,7 +87,6 @@ public class    UserHomePage extends AppCompatActivity {
         cleaning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(UserHomePage.this, vendorList.class);
                 intent.putExtra("category","Cleaning");
                 startActivity(intent);
@@ -99,7 +95,6 @@ public class    UserHomePage extends AppCompatActivity {
         lawnmower.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(UserHomePage.this, vendorList.class);
                 intent.putExtra("category","Lawnmower");
                 startActivity(intent);

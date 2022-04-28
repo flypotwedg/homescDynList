@@ -134,7 +134,7 @@ public class placeReq extends AppCompatActivity {
             zipcode=zipcodeInput.getText().toString().trim();
 
             address=street+", "+city+", "+state+", "+zipcode;
-            confirmBtn.setEnabled(!(street.isEmpty()||city.isEmpty()||state.isEmpty()||zipcode.isEmpty()));
+            confirmBtn.setEnabled(!(street.isEmpty()&&city.isEmpty()&&state.isEmpty()&&zipcode.isEmpty()));
         }
 
         @Override
@@ -187,7 +187,7 @@ public class placeReq extends AppCompatActivity {
         String apptTime=time.getText().toString();
         String apptDate=date.getText().toString();
 
-        if(!(street.isEmpty()||city.isEmpty()||state.isEmpty()||zipcode.isEmpty()||apptTime.isEmpty()||apptDate.isEmpty()))
+        if(!(street.isEmpty()&&city.isEmpty()&&state.isEmpty()&&zipcode.isEmpty()&&apptTime.isEmpty()&&apptDate.isEmpty()))
         {
             Intent intent = new Intent();
             intent.putExtra("address", address);
