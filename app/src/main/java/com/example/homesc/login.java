@@ -67,15 +67,14 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         {
             startActivity(new Intent(this, forgotPassword.class));
         }
-       else
-        {
-
-        }
 
     }
     public void userLogin() {
-        String email = editEmail.getText().toString().trim();
-        String password = editPassword.getText().toString().trim();
+        //String email = editEmail.getText().toString().trim();
+        //String password = editPassword.getText().toString().trim();
+
+        String email = "rockswagat77@gmail.com";
+        String password = "Swagat12";
 
         if (email.isEmpty()) {
             editEmail.setError("An email is required");
@@ -96,6 +95,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                     if (task.isSuccessful()) {
                         //go to home page for user
                             Intent intent = new Intent(login.this, UserHomePage.class);
+                            finish();
                             startActivity(intent);
                         }
                     else {

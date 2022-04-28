@@ -45,7 +45,7 @@ public class vendorList extends AppCompatActivity {
         category=getIntent().getStringExtra("category");
         categoryLabel.setText(category);
 
-        Query vendQuery=database.child("Vendors").orderByChild(category);
+        Query vendQuery=database.child("Vendors").orderByChild("category").equalTo(category);
         vendQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -66,6 +66,7 @@ public class vendorList extends AppCompatActivity {
                             Intent intent=new Intent(vendorList.this, vendProf.class);
                             intent.putExtra("vendUID", (String) vendUID.get(pos));
                             startActivity(intent);
+                            finish();
                         }
 
                     });

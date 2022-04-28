@@ -140,27 +140,32 @@ public class vendProf extends AppCompatActivity {
 
         database.updateChildren(childUpdate);
         Toast.makeText(this, "Order submitted", Toast.LENGTH_LONG).show();
+        finish();
     }
     protected void onActivityResult(int reqCode, int resCode, Intent data) {
         super.onActivityResult(reqCode, resCode, data);
         switch(reqCode)
         {
             case 1: //placeReq
-                if(resCode==RESULT_OK)
+                switch(resCode)
                 {
-                    String address=data.getStringExtra("address");
-                    String time=data.getStringExtra("time");
-                    String date=data.getStringExtra("date");
-                    vendRating.setText(address+"|"+time+"|"+date);
+                    case RESULT_OK:
+                        String address=data.getStringExtra("address");
+                        String time=data.getStringExtra("time");
+                        String date=data.getStringExtra("date");
+                        vendRating.setText(address+"|"+time+"|"+date);
 
-                    order.setAppt(date,time);
-                    order.setAddress(address);
+                        order.setAppt(date,time);
+                        order.setAddress(address);
 
-                    openPayment();
-                }
-                else
-                {
-                    Toast.makeText(this, "Error confirming appointment details, please try again", Toast.LENGTH_LONG).show();
+                        openPayment();
+                        break;
+                    case RESULT_CANCELED:
+                        Toast.makeText(this, "Order Cancelled", Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        Toast.makeText(this, "Error confirming appointment details, please try again", Toast.LENGTH_LONG).show();
+                        break;
                 }
                 break;
             case 2: //payment
