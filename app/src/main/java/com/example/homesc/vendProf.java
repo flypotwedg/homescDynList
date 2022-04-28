@@ -153,7 +153,6 @@ public class vendProf extends AppCompatActivity {
                         String address=data.getStringExtra("address");
                         String time=data.getStringExtra("time");
                         String date=data.getStringExtra("date");
-                        vendRating.setText(address+"|"+time+"|"+date);
 
                         order.setAppt(date,time);
                         order.setAddress(address);
@@ -172,10 +171,10 @@ public class vendProf extends AppCompatActivity {
                 switch(resCode)
                 {
                     case RESULT_OK:
-                        float tempPrice=(float)data.getFloatExtra("payAmount",0f);
+                        /*float tempPrice=(float)data.getFloatExtra("payAmount",0f);
                         String priceStr;
-                        priceStr=dfZero.format(tempPrice);
-                        order.setPrice(Float.parseFloat(priceStr));
+                        priceStr=dfZero.format(tempPrice);*/
+                        order.setPrice(Float.parseFloat("50.25"));
 
                         uploadOrder();
                         break;

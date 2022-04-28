@@ -47,8 +47,9 @@ public class Payment extends AppCompatActivity {
                 }
                 else{
                     setResult(RESULT_OK);
+                    finish();
                 }
-                finish();
+
             }}
         );
         cancel.setOnClickListener(new View.OnClickListener() {

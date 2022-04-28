@@ -107,7 +107,15 @@ public class placeReq extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener(){ //confirm button
             @Override
             public void onClick(View v){
-                openNextAct();
+                if(zipcodeInput.getText().toString().length()==5)
+                {
+                    openNextAct();
+                }
+                else
+                {
+                    Toast.makeText(placeReq.this, "Invalid zipcode. Please Re-enter", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -125,9 +133,8 @@ public class placeReq extends AppCompatActivity {
             state=stateInput.getText().toString().trim();
             zipcode=zipcodeInput.getText().toString().trim();
 
-            address=street+" "+city+", "+state+" "+zipcode;
-
-            confirmBtn.setEnabled(!(street.isEmpty()&&city.isEmpty()&&state.isEmpty()&&zipcode.isEmpty()));
+            address=street+", "+city+", "+state+", "+zipcode;
+            confirmBtn.setEnabled(!(street.isEmpty()||city.isEmpty()||state.isEmpty()||zipcode.isEmpty()));
         }
 
         @Override
@@ -180,7 +187,7 @@ public class placeReq extends AppCompatActivity {
         String apptTime=time.getText().toString();
         String apptDate=date.getText().toString();
 
-        if(!(street.isEmpty()&&city.isEmpty()&&state.isEmpty()&&zipcode.isEmpty()&&apptTime.isEmpty()&&apptDate.isEmpty()))
+        if(!(street.isEmpty()||city.isEmpty()||state.isEmpty()||zipcode.isEmpty()||apptTime.isEmpty()||apptDate.isEmpty()))
         {
             Intent intent = new Intent();
             intent.putExtra("address", address);
