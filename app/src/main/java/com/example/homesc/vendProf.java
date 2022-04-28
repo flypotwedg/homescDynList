@@ -65,7 +65,7 @@ public class vendProf extends AppCompatActivity {
 
         Query vendQuery=database.child("Vendors").orderByChild(vendUID);
 
-        vendQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        vendQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
@@ -105,8 +105,7 @@ public class vendProf extends AppCompatActivity {
     }
     public void openPayment()
     {
-        Intent payment=new Intent(this,paymentTemp.class);
-        payment.putExtra("vendName", vendorName);
+        Intent payment=new Intent(this,Payment.class);
         startActivityForResult(payment,2);
     }
     public void uploadOrder()
@@ -140,13 +139,13 @@ public class vendProf extends AppCompatActivity {
         childUpdate.put("/Orders/"+key,orderDetails);
 
         database.updateChildren(childUpdate);
-        Toast.makeText(this, "Order submitted", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Order submitted", Toast.LENGTH_LONG).show();
     }
     protected void onActivityResult(int reqCode, int resCode, Intent data) {
         super.onActivityResult(reqCode, resCode, data);
         switch(reqCode)
         {
-            case 1:
+            case 1: //placeReq
                 if(resCode==RESULT_OK)
                 {
                     String address=data.getStringExtra("address");
@@ -164,21 +163,24 @@ public class vendProf extends AppCompatActivity {
                     Toast.makeText(this, "Error confirming appointment details, please try again", Toast.LENGTH_LONG).show();
                 }
                 break;
-            case 2:
-                if(resCode==RESULT_OK)
+            case 2: //payment
+                switch(resCode)
                 {
-                    float tempPrice=(float)data.getFloatExtra("payAmount",0f);
-                    String priceStr;
-                    priceStr=dfZero.format(tempPrice);
-                    order.setPrice(Float.parseFloat(priceStr));
+                    case RESULT_OK:
+                        float tempPrice=(float)data.getFloatExtra("payAmount",0f);
+                        String priceStr;
+                        priceStr=dfZero.format(tempPrice);
+                        order.setPrice(Float.parseFloat(priceStr));
 
-                    uploadOrder();
+                        uploadOrder();
+                        break;
+                    case 2:
+                        Toast.makeText(this, "Cancelled Order", Toast.LENGTH_LONG).show();
+                        break;
+                    default:
+                        Toast.makeText(this, "Error retrieving information", Toast.LENGTH_LONG).show();
+                        break;
                 }
-                else
-                {
-                    Toast.makeText(this, "Price error", Toast.LENGTH_LONG).show();
-                }
-                break;
             default:
                 Toast.makeText(this, "An error occurred, please try again", Toast.LENGTH_LONG).show();
                 break;

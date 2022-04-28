@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Homesc">
         <activity
+            android:name=".placeReq"
+            android:exported="false" />
+        <activity
+            android:name=".Payment"
+            android:exported="false" />
+        <activity
             android:name=".vendProf"
             android:exported="false" />
         <activity
